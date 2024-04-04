@@ -1,9 +1,6 @@
-# Merge Board
+# Marge Board
 
-This fork is designed to add compatibility with 
-[vladmandic's fork SD.Next of AUTOMATIC1111's Stable Diffusion Web UI](https://github.com/vladmandic/automatic)
-
-| [Multi-Merge](## Multi-Merge) | [Merge Recipe](## Recipe) (Import/Export) | Checkpoint List    |
+| [Multi-Merge](## Multi-Marge) | [Merge Recipe](## Recipe) (Import/Export) | Checkpoint List    |
 | ----------------------------- | ----------------------------------------- | ------------------ |
 | ![](misc/ss01.png)            | ![](misc/ss02.png)                        | ![](misc/ss03.png) |
 
@@ -11,7 +8,7 @@ This fork is designed to add compatibility with
 
 ## Features
 
-- **Multiple step merge** support ( up to 10 step)
+- **Multiple step marge** support ( up to 10 step)
 - Save and Load your merging combination as `Recipe`, which is simple text.
 
 ## Recent Update
@@ -44,7 +41,7 @@ metadata_json = "{}"
 
 - Install
 
-## Multi-Merge
+## Multi-Marge
 
 ![](misc/ss01.png)
 
@@ -101,7 +98,7 @@ metadata_json = "{}"
 
 - this is sample Recipe
 
-- each line represents one merge process.
+- each line represents one marge process.
 
 - you can use variable for former line output,
 

@@ -5,7 +5,7 @@ from modules import sd_models
 
 from scripts.multimerge.recipe import S_WEIGHTED_SUM, S_WEIGHTED_SUBTRACTION, S_TENSOR_SUM, S_ADD_DIFFERENCE, S_SUM_TWICE, S_TRIPLE_SUM, S_EUCLIDEAN_ADD_DIFFERENCE, S_MULTIPLY_DIFFERENCE, S_TOP_K_TENSOR_SUM, S_SIMILARITY_ADD_DIFFERENCE, S_DISTRIBUTION_CROSSOVER, S_TIES_ADD_DIFFERENCE, choice_of_method
 
-Variables_Output = ["__Out1__", "__Out2__", "__Out3__", "__Out4__", "__Out5__", "__Out6__", "__Out7__", "__Out8__", "__Out9__", "__Out10__"]
+Variables_Output = ["__O1__", "__O2__", "__O3__", "__O4__", "__O5__", "__O6__", "__O7__", "__O8__", "__O9__", "__O10__"]
 
 def get_choice_of_models_with_vars(current_line=10):
     return Variables_Output[:current_line-1] + sd_models.checkpoint_tiles()
