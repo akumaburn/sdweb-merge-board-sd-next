@@ -148,7 +148,7 @@ class MergeRecipe():
             "save_metadata": save_metadata,
             "device": "cpu",
             "unload": True,
-            "precision": "fp16",
+            "precision": "fp16" if self.F else "fp32",
             "alpha": self.M,
             "beta": self.M
             # Include additional parameters required by the latest run_modelmerger definition
