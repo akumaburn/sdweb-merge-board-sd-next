@@ -5,9 +5,9 @@ from modules import sd_models
 
 from scripts.multimerge.recipe import S_WEIGHTED_SUM, S_WEIGHTED_SUBTRACTION, S_TENSOR_SUM, S_ADD_DIFFERENCE, S_SUM_TWICE, S_TRIPLE_SUM, S_EUCLIDEAN_ADD_DIFFERENCE, S_MULTIPLY_DIFFERENCE, S_TOP_K_TENSOR_SUM, S_SIMILARITY_ADD_DIFFERENCE, S_DISTRIBUTION_CROSSOVER, S_TIES_ADD_DIFFERENCE, choice_of_method
 
-Variables_Output = ["__O1__", "__O2__", "__O3__", "__O4__", "__O5__", "__O6__", "__O7__", "__O8__", "__O9__", "__O10__"]
+Variables_Output = ["__Out1__", "__Out2__", "__Out3__", "__Out4__", "__Out5__", "__Out6__", "__Out7__", "__Out8__", "__Out9__", "__Out10__"]
 
-def get_choise_of_models_with_vars(current_line=10):
+def get_choice_of_models_with_vars(current_line=10):
     return Variables_Output[:current_line-1] + sd_models.checkpoint_tiles()
 
 
@@ -39,12 +39,12 @@ def on_ui_tabs():
                         with gr.Column():
                             with gr.Row(variant="panel"):
                                 _line_number = 1
-                                A1 = gr.Dropdown(choices=get_choise_of_models_with_vars(_line_number), interactive=True, label=f"(A{_line_number}) Primary")
-                                B1 = gr.Dropdown(choices=get_choise_of_models_with_vars(_line_number), interactive=True, label=f"(B{_line_number}) Secondary")
-                                C1 = gr.Dropdown(choices=get_choise_of_models_with_vars(_line_number), interactive=True, label=f"(C{_line_number}) Thertiary")
-                                O1 = gr.Textbox(label=f"(O{_line_number}) Output ckpt Name", interactive=True)
+                                A1 = gr.Dropdown(choices=get_choice_of_models_with_vars(_line_number), interactive=True, label=f"(A{_line_number}) Primary")
+                                B1 = gr.Dropdown(choices=get_choice_of_models_with_vars(_line_number), interactive=True, label=f"(B{_line_number}) Secondary")
+                                C1 = gr.Dropdown(choices=get_choice_of_models_with_vars(_line_number), interactive=True, label=f"(C{_line_number}) Thertiary")
+                                O1 = gr.Textbox(label=f"(O{_line_number}) Output ckpt Name", value=f"tmp(F{_line_number})", interactive=True)
                                 M1 = gr.Slider(minimum=0.0, maximum=1.0, step=0.001, label=f'(M{_line_number}) Multiplier', value=0.5, interactive=True)
-                                S1 = gr.Dropdown(choices=choice_of_method, interactive=True, value=choice_of_method[0], label=f"(S{_line_number}) Inter-Method")
+                                S1 = gr.Dropdown(choices=choice_of_method, interactive=True, value=choice_of_method[4], label=f"(S{_line_number}) Inter-Method")
                                 F1 = gr.Checkbox(value=False, interactive=True, label=f"(F{_line_number}) Save as float16")
                                 CF1 = gr.Radio(choices=["ckpt", "safetensors"], interactive=True, value="safetensors", label=f"(CF{_line_number}) Checkpoint format")
                                 _checkpoint_listener += [A1, B1, C1]
@@ -52,12 +52,12 @@ def on_ui_tabs():
                         with gr.Column():
                             with gr.Row(variant="panel"):
                                 _line_number = 2
-                                A2 = gr.Dropdown(choices=get_choise_of_models_with_vars(_line_number), interactive=True, label=f"(A{_line_number}) Primary")
-                                B2 = gr.Dropdown(choices=get_choise_of_models_with_vars(_line_number), interactive=True, label=f"(B{_line_number}) Secondary")
-                                C2 = gr.Dropdown(choices=get_choise_of_models_with_vars(_line_number), interactive=True, label=f"(C{_line_number}) Thertiary")
-                                O2 = gr.Textbox(label=f"(O{_line_number}) Output ckpt Name", interactive=True)
+                                A2 = gr.Dropdown(choices=get_choice_of_models_with_vars(_line_number), interactive=True, label=f"(A{_line_number}) Primary")
+                                B2 = gr.Dropdown(choices=get_choice_of_models_with_vars(_line_number), interactive=True, label=f"(B{_line_number}) Secondary")
+                                C2 = gr.Dropdown(choices=get_choice_of_models_with_vars(_line_number), interactive=True, label=f"(C{_line_number}) Thertiary")
+                                O2 = gr.Textbox(label=f"(O{_line_number}) Output ckpt Name", value=f"tmp(F{_line_number})", interactive=True)
                                 M2 = gr.Slider(minimum=0.0, maximum=1.0, step=0.001, label=f'(M{_line_number}) Multiplier', value=0.5, interactive=True)
-                                S2 = gr.Dropdown(choices=choice_of_method, interactive=True, value=choice_of_method[0], label=f"(S{_line_number}) Inter-Method")
+                                S2 = gr.Dropdown(choices=choice_of_method, interactive=True, value=choice_of_method[4], label=f"(S{_line_number}) Inter-Method")
                                 F2 = gr.Checkbox(value=False, interactive=True, label=f"(F{_line_number}) Save as float16")
                                 CF2 = gr.Radio(choices=["ckpt", "safetensors"], interactive=True, value="safetensors", label=f"(CF{_line_number}) Checkpoint format")
                                 _checkpoint_listener += [A2, B2, C2]
@@ -65,12 +65,12 @@ def on_ui_tabs():
                         with gr.Column():
                             with gr.Row(variant="panel"):
                                 _line_number = 3
-                                A3 = gr.Dropdown(choices=get_choise_of_models_with_vars(_line_number), interactive=True, label=f"(A{_line_number}) Primary")
-                                B3 = gr.Dropdown(choices=get_choise_of_models_with_vars(_line_number), interactive=True, label=f"(B{_line_number}) Secondary")
-                                C3 = gr.Dropdown(choices=get_choise_of_models_with_vars(_line_number), interactive=True, label=f"(C{_line_number}) Thertiary")
-                                O3 = gr.Textbox(label=f"(O{_line_number}) Output ckpt Name", interactive=True)
+                                A3 = gr.Dropdown(choices=get_choice_of_models_with_vars(_line_number), interactive=True, label=f"(A{_line_number}) Primary")
+                                B3 = gr.Dropdown(choices=get_choice_of_models_with_vars(_line_number), interactive=True, label=f"(B{_line_number}) Secondary")
+                                C3 = gr.Dropdown(choices=get_choice_of_models_with_vars(_line_number), interactive=True, label=f"(C{_line_number}) Thertiary")
+                                O3 = gr.Textbox(label=f"(O{_line_number}) Output ckpt Name", value=f"tmp(F{_line_number})", interactive=True)
                                 M3 = gr.Slider(minimum=0.0, maximum=1.0, step=0.001, label=f'(M{_line_number}) Multiplier', value=0.5, interactive=True)
-                                S3 = gr.Dropdown(choices=choice_of_method, interactive=True, value=choice_of_method[0], label=f"(S{_line_number}) Inter-Method")
+                                S3 = gr.Dropdown(choices=choice_of_method, interactive=True, value=choice_of_method[4], label=f"(S{_line_number}) Inter-Method")
                                 F3 = gr.Checkbox(value=False, interactive=True, label=f"(F{_line_number}) Save as float16")
                                 CF3 = gr.Radio(choices=["ckpt", "safetensors"], interactive=True, value="safetensors", label=f"(CF{_line_number}) Checkpoint format")
                                 _checkpoint_listener += [A3, B3, C3]
@@ -78,12 +78,12 @@ def on_ui_tabs():
                         with gr.Column():
                             with gr.Row(variant="panel"):
                                 _line_number = 4
-                                A4 = gr.Dropdown(choices=get_choise_of_models_with_vars(_line_number), interactive=True, label=f"(A{_line_number}) Primary")
-                                B4 = gr.Dropdown(choices=get_choise_of_models_with_vars(_line_number), interactive=True, label=f"(B{_line_number}) Secondary")
-                                C4 = gr.Dropdown(choices=get_choise_of_models_with_vars(_line_number), interactive=True, label=f"(C{_line_number}) Thertiary")
-                                O4 = gr.Textbox(label=f"(O{_line_number}) Output ckpt Name", interactive=True)
+                                A4 = gr.Dropdown(choices=get_choice_of_models_with_vars(_line_number), interactive=True, label=f"(A{_line_number}) Primary")
+                                B4 = gr.Dropdown(choices=get_choice_of_models_with_vars(_line_number), interactive=True, label=f"(B{_line_number}) Secondary")
+                                C4 = gr.Dropdown(choices=get_choice_of_models_with_vars(_line_number), interactive=True, label=f"(C{_line_number}) Thertiary")
+                                O4 = gr.Textbox(label=f"(O{_line_number}) Output ckpt Name", value=f"tmp(F{_line_number})", interactive=True)
                                 M4 = gr.Slider(minimum=0.0, maximum=1.0, step=0.001, label=f'(M{_line_number}) Multiplier', value=0.5, interactive=True)
-                                S4 = gr.Dropdown(choices=choice_of_method, interactive=True, value=choice_of_method[0], label=f"(S{_line_number}) Inter-Method")
+                                S4 = gr.Dropdown(choices=choice_of_method, interactive=True, value=choice_of_method[4], label=f"(S{_line_number}) Inter-Method")
                                 F4 = gr.Checkbox(value=False, interactive=True, label=f"(F{_line_number}) Save as float16")
                                 CF4 = gr.Radio(choices=["ckpt", "safetensors"], interactive=True, value="safetensors", label=f"(CF{_line_number}) Checkpoint format")
                                 _checkpoint_listener += [A4, B4, C4]
@@ -91,12 +91,12 @@ def on_ui_tabs():
                         with gr.Column():
                             with gr.Row(variant="panel"):
                                 _line_number = 5
-                                A5 = gr.Dropdown(choices=get_choise_of_models_with_vars(_line_number), interactive=True, label=f"(A{_line_number}) Primary")
-                                B5 = gr.Dropdown(choices=get_choise_of_models_with_vars(_line_number), interactive=True, label=f"(B{_line_number}) Secondary")
-                                C5 = gr.Dropdown(choices=get_choise_of_models_with_vars(_line_number), interactive=True, label=f"(C{_line_number}) Thertiary")
-                                O5 = gr.Textbox(label=f"(O{_line_number}) Output ckpt Name", interactive=True)
+                                A5 = gr.Dropdown(choices=get_choice_of_models_with_vars(_line_number), interactive=True, label=f"(A{_line_number}) Primary")
+                                B5 = gr.Dropdown(choices=get_choice_of_models_with_vars(_line_number), interactive=True, label=f"(B{_line_number}) Secondary")
+                                C5 = gr.Dropdown(choices=get_choice_of_models_with_vars(_line_number), interactive=True, label=f"(C{_line_number}) Thertiary")
+                                O5 = gr.Textbox(label=f"(O{_line_number}) Output ckpt Name", value=f"tmp(F{_line_number})", interactive=True)
                                 M5 = gr.Slider(minimum=0.0, maximum=1.0, step=0.001, label=f'(M{_line_number}) Multiplier', value=0.5, interactive=True)
-                                S5 = gr.Dropdown(choices=choice_of_method, interactive=True, value=choice_of_method[0], label=f"(S{_line_number}) Inter-Method")
+                                S5 = gr.Dropdown(choices=choice_of_method, interactive=True, value=choice_of_method[4], label=f"(S{_line_number}) Inter-Method")
                                 F5 = gr.Checkbox(value=False, interactive=True, label=f"(F{_line_number}) Save as float16")
                                 CF5 = gr.Radio(choices=["ckpt", "safetensors"], interactive=True, value="safetensors", label=f"(CF{_line_number}) Checkpoint format")
                                 _checkpoint_listener += [A5, B5, C5]
@@ -104,12 +104,12 @@ def on_ui_tabs():
                         with gr.Column():
                             with gr.Row(variant="panel"):
                                 _line_number = 6
-                                A6 = gr.Dropdown(choices=get_choise_of_models_with_vars(_line_number), interactive=True, label=f"(A{_line_number}) Primary")
-                                B6 = gr.Dropdown(choices=get_choise_of_models_with_vars(_line_number), interactive=True, label=f"(B{_line_number}) Secondary")
-                                C6 = gr.Dropdown(choices=get_choise_of_models_with_vars(_line_number), interactive=True, label=f"(C{_line_number}) Thertiary")
-                                O6 = gr.Textbox(label=f"(O{_line_number}) Output ckpt Name", interactive=True)
+                                A6 = gr.Dropdown(choices=get_choice_of_models_with_vars(_line_number), interactive=True, label=f"(A{_line_number}) Primary")
+                                B6 = gr.Dropdown(choices=get_choice_of_models_with_vars(_line_number), interactive=True, label=f"(B{_line_number}) Secondary")
+                                C6 = gr.Dropdown(choices=get_choice_of_models_with_vars(_line_number), interactive=True, label=f"(C{_line_number}) Thertiary")
+                                O6 = gr.Textbox(label=f"(O{_line_number}) Output ckpt Name", value=f"tmp(F{_line_number})", interactive=True)
                                 M6 = gr.Slider(minimum=0.0, maximum=1.0, step=0.001, label=f'(M{_line_number}) Multiplier', value=0.5, interactive=True)
-                                S6 = gr.Dropdown(choices=choice_of_method, interactive=True, value=choice_of_method[0], label=f"(S{_line_number}) Inter-Method")
+                                S6 = gr.Dropdown(choices=choice_of_method, interactive=True, value=choice_of_method[4], label=f"(S{_line_number}) Inter-Method")
                                 F6 = gr.Checkbox(value=False, interactive=True, label=f"(F{_line_number}) Save as float16")
                                 CF6 = gr.Radio(choices=["ckpt", "safetensors"], interactive=True, value="safetensors", label=f"(CF{_line_number}) Checkpoint format")
                                 _checkpoint_listener += [A6, B6, C6]
@@ -117,12 +117,12 @@ def on_ui_tabs():
                         with gr.Column():
                             with gr.Row(variant="panel"):
                                 _line_number = 7
-                                A7 = gr.Dropdown(choices=get_choise_of_models_with_vars(_line_number), interactive=True, label=f"(A{_line_number}) Primary")
-                                B7 = gr.Dropdown(choices=get_choise_of_models_with_vars(_line_number), interactive=True, label=f"(B{_line_number}) Secondary")
-                                C7 = gr.Dropdown(choices=get_choise_of_models_with_vars(_line_number), interactive=True, label=f"(C{_line_number}) Thertiary")
-                                O7 = gr.Textbox(label=f"(O{_line_number}) Output ckpt Name", interactive=True)
+                                A7 = gr.Dropdown(choices=get_choice_of_models_with_vars(_line_number), interactive=True, label=f"(A{_line_number}) Primary")
+                                B7 = gr.Dropdown(choices=get_choice_of_models_with_vars(_line_number), interactive=True, label=f"(B{_line_number}) Secondary")
+                                C7 = gr.Dropdown(choices=get_choice_of_models_with_vars(_line_number), interactive=True, label=f"(C{_line_number}) Thertiary")
+                                O7 = gr.Textbox(label=f"(O{_line_number}) Output ckpt Name", value=f"tmp(F{_line_number})", interactive=True)
                                 M7 = gr.Slider(minimum=0.0, maximum=1.0, step=0.001, label=f'(M{_line_number}) Multiplier', value=0.5, interactive=True)
-                                S7 = gr.Dropdown(choices=choice_of_method, interactive=True, value=choice_of_method[0], label=f"(S{_line_number}) Inter-Method")
+                                S7 = gr.Dropdown(choices=choice_of_method, interactive=True, value=choice_of_method[4], label=f"(S{_line_number}) Inter-Method")
                                 F7 = gr.Checkbox(value=False, interactive=True, label=f"(F{_line_number}) Save as float16")
                                 CF7 = gr.Radio(choices=["ckpt", "safetensors"], interactive=True, value="safetensors", label=f"(CF{_line_number}) Checkpoint format")
                                 _checkpoint_listener += [A7, B7, C7]
@@ -130,12 +130,12 @@ def on_ui_tabs():
                         with gr.Column():
                             with gr.Row(variant="panel"):
                                 _line_number = 8
-                                A8 = gr.Dropdown(choices=get_choise_of_models_with_vars(_line_number), interactive=True, label=f"(A{_line_number}) Primary")
-                                B8 = gr.Dropdown(choices=get_choise_of_models_with_vars(_line_number), interactive=True, label=f"(B{_line_number}) Secondary")
-                                C8 = gr.Dropdown(choices=get_choise_of_models_with_vars(_line_number), interactive=True, label=f"(C{_line_number}) Thertiary")
-                                O8 = gr.Textbox(label=f"(O{_line_number}) Output ckpt Name", interactive=True)
+                                A8 = gr.Dropdown(choices=get_choice_of_models_with_vars(_line_number), interactive=True, label=f"(A{_line_number}) Primary")
+                                B8 = gr.Dropdown(choices=get_choice_of_models_with_vars(_line_number), interactive=True, label=f"(B{_line_number}) Secondary")
+                                C8 = gr.Dropdown(choices=get_choice_of_models_with_vars(_line_number), interactive=True, label=f"(C{_line_number}) Thertiary")
+                                O8 = gr.Textbox(label=f"(O{_line_number}) Output ckpt Name", value=f"tmp(F{_line_number})", interactive=True)
                                 M8 = gr.Slider(minimum=0.0, maximum=1.0, step=0.001, label=f'(M{_line_number}) Multiplier', value=0.5, interactive=True)
-                                S8 = gr.Dropdown(choices=choice_of_method, interactive=True, value=choice_of_method[0], label=f"(S{_line_number}) Inter-Method")
+                                S8 = gr.Dropdown(choices=choice_of_method, interactive=True, value=choice_of_method[4], label=f"(S{_line_number}) Inter-Method")
                                 F8 = gr.Checkbox(value=False, interactive=True, label=f"(F{_line_number}) Save as float16")
                                 CF8 = gr.Radio(choices=["ckpt", "safetensors"], interactive=True, value="safetensors", label=f"(CF{_line_number}) Checkpoint format")
                                 _checkpoint_listener += [A8, B8, C8]
@@ -143,12 +143,12 @@ def on_ui_tabs():
                         with gr.Column():
                             with gr.Row(variant="panel"):
                                 _line_number = 9
-                                A9 = gr.Dropdown(choices=get_choise_of_models_with_vars(_line_number), interactive=True, label=f"(A{_line_number}) Primary")
-                                B9 = gr.Dropdown(choices=get_choise_of_models_with_vars(_line_number), interactive=True, label=f"(B{_line_number}) Secondary")
-                                C9 = gr.Dropdown(choices=get_choise_of_models_with_vars(_line_number), interactive=True, label=f"(C{_line_number}) Thertiary")
-                                O9 = gr.Textbox(label=f"(O{_line_number}) Output ckpt Name", interactive=True)
+                                A9 = gr.Dropdown(choices=get_choice_of_models_with_vars(_line_number), interactive=True, label=f"(A{_line_number}) Primary")
+                                B9 = gr.Dropdown(choices=get_choice_of_models_with_vars(_line_number), interactive=True, label=f"(B{_line_number}) Secondary")
+                                C9 = gr.Dropdown(choices=get_choice_of_models_with_vars(_line_number), interactive=True, label=f"(C{_line_number}) Thertiary")
+                                O9 = gr.Textbox(label=f"(O{_line_number}) Output ckpt Name", value=f"tmp(F{_line_number})", interactive=True)
                                 M9 = gr.Slider(minimum=0.0, maximum=1.0, step=0.001, label=f'(M{_line_number}) Multiplier', value=0.5, interactive=True)
-                                S9 = gr.Dropdown(choices=choice_of_method, interactive=True, value=choice_of_method[0], label=f"(S{_line_number}) Inter-Method")
+                                S9 = gr.Dropdown(choices=choice_of_method, interactive=True, value=choice_of_method[4], label=f"(S{_line_number}) Inter-Method")
                                 F9 = gr.Checkbox(value=False, interactive=True, label=f"(F{_line_number}) Save as float16")
                                 CF9 = gr.Radio(choices=["ckpt", "safetensors"], interactive=True, value="safetensors", label=f"(CF{_line_number}) Checkpoint format")
                                 _checkpoint_listener += [A9, B9, C9]
@@ -156,12 +156,12 @@ def on_ui_tabs():
                         with gr.Column():
                             with gr.Row(variant="panel"):
                                 _line_number = 10
-                                A10 = gr.Dropdown(choices=get_choise_of_models_with_vars(_line_number), interactive=True, label=f"(A{_line_number}) Primary")
-                                B10 = gr.Dropdown(choices=get_choise_of_models_with_vars(_line_number), interactive=True, label=f"(B{_line_number}) Secondary")
-                                C10 = gr.Dropdown(choices=get_choise_of_models_with_vars(_line_number), interactive=True, label=f"(C{_line_number}) Thertiary")
-                                O10 = gr.Textbox(label=f"(O{_line_number}) Output ckpt Name", interactive=True)
+                                A10 = gr.Dropdown(choices=get_choice_of_models_with_vars(_line_number), interactive=True, label=f"(A{_line_number}) Primary")
+                                B10 = gr.Dropdown(choices=get_choice_of_models_with_vars(_line_number), interactive=True, label=f"(B{_line_number}) Secondary")
+                                C10 = gr.Dropdown(choices=get_choice_of_models_with_vars(_line_number), interactive=True, label=f"(C{_line_number}) Thertiary")
+                                O10 = gr.Textbox(label=f"(O{_line_number}) Output ckpt Name", value=f"tmp(F{_line_number})", interactive=True)
                                 M10 = gr.Slider(minimum=0.0, maximum=1.0, step=0.001, label=f'(M{_line_number}) Multiplier', value=0.5, interactive=True)
-                                S10 = gr.Dropdown(choices=choice_of_method, interactive=True, value=choice_of_method[0], label=f"(S{_line_number}) Inter-Method")
+                                S10 = gr.Dropdown(choices=choice_of_method, interactive=True, value=choice_of_method[4], label=f"(S{_line_number}) Inter-Method")
                                 F10 = gr.Checkbox(value=False, interactive=True, label=f"(F{_line_number}) Save as float16")
                                 CF10 = gr.Radio(choices=["ckpt", "safetensors"], interactive=True, value="safetensors", label=f"(CF{_line_number}) Checkpoint format")
                                 _checkpoint_listener += [A10, B10, C10]
@@ -171,16 +171,16 @@ def on_ui_tabs():
     #
     def on_clear_settings():
         _ret = [
-            gr.update(value=""),gr.update(value=""),gr.update(value=""),gr.update(value=0.5),gr.update(value=S_WS),gr.update(value=False),gr.update(value=""),gr.update(value="safetensors"),
-            gr.update(value=""),gr.update(value=""),gr.update(value=""),gr.update(value=0.5),gr.update(value=S_WS),gr.update(value=False),gr.update(value=""),gr.update(value="safetensors"),
-            gr.update(value=""),gr.update(value=""),gr.update(value=""),gr.update(value=0.5),gr.update(value=S_WS),gr.update(value=False),gr.update(value=""),gr.update(value="safetensors"),
-            gr.update(value=""),gr.update(value=""),gr.update(value=""),gr.update(value=0.5),gr.update(value=S_WS),gr.update(value=False),gr.update(value=""),gr.update(value="safetensors"),
-            gr.update(value=""),gr.update(value=""),gr.update(value=""),gr.update(value=0.5),gr.update(value=S_WS),gr.update(value=False),gr.update(value=""),gr.update(value="safetensors"),
-            gr.update(value=""),gr.update(value=""),gr.update(value=""),gr.update(value=0.5),gr.update(value=S_WS),gr.update(value=False),gr.update(value=""),gr.update(value="safetensors"),
-            gr.update(value=""),gr.update(value=""),gr.update(value=""),gr.update(value=0.5),gr.update(value=S_WS),gr.update(value=False),gr.update(value=""),gr.update(value="safetensors"),
-            gr.update(value=""),gr.update(value=""),gr.update(value=""),gr.update(value=0.5),gr.update(value=S_WS),gr.update(value=False),gr.update(value=""),gr.update(value="safetensors"),
-            gr.update(value=""),gr.update(value=""),gr.update(value=""),gr.update(value=0.5),gr.update(value=S_WS),gr.update(value=False),gr.update(value=""),gr.update(value="safetensors"),
-            gr.update(value=""),gr.update(value=""),gr.update(value=""),gr.update(value=0.5),gr.update(value=S_WS),gr.update(value=False),gr.update(value=""),gr.update(value="safetensors")
+            gr.update(value=""),gr.update(value=""),gr.update(value="tmp(F1)"),gr.update(value=0.5),gr.update(value=S_TRIPLE_SUM),gr.update(value=False),gr.update(value=""),gr.update(value="safetensors"),
+            gr.update(value=""),gr.update(value=""),gr.update(value="tmp(F2)"),gr.update(value=0.5),gr.update(value=S_TRIPLE_SUM),gr.update(value=False),gr.update(value=""),gr.update(value="safetensors"),
+            gr.update(value=""),gr.update(value=""),gr.update(value="tmp(F3)"),gr.update(value=0.5),gr.update(value=S_TRIPLE_SUM),gr.update(value=False),gr.update(value=""),gr.update(value="safetensors"),
+            gr.update(value=""),gr.update(value=""),gr.update(value="tmp(F4)"),gr.update(value=0.5),gr.update(value=S_TRIPLE_SUM),gr.update(value=False),gr.update(value=""),gr.update(value="safetensors"),
+            gr.update(value=""),gr.update(value=""),gr.update(value="tmp(F5)"),gr.update(value=0.5),gr.update(value=S_TRIPLE_SUM),gr.update(value=False),gr.update(value=""),gr.update(value="safetensors"),
+            gr.update(value=""),gr.update(value=""),gr.update(value="tmp(F6)"),gr.update(value=0.5),gr.update(value=S_TRIPLE_SUM),gr.update(value=False),gr.update(value=""),gr.update(value="safetensors"),
+            gr.update(value=""),gr.update(value=""),gr.update(value="tmp(F7)"),gr.update(value=0.5),gr.update(value=S_TRIPLE_SUM),gr.update(value=False),gr.update(value=""),gr.update(value="safetensors"),
+            gr.update(value=""),gr.update(value=""),gr.update(value="tmp(F8)"),gr.update(value=0.5),gr.update(value=S_TRIPLE_SUM),gr.update(value=False),gr.update(value=""),gr.update(value="safetensors"),
+            gr.update(value=""),gr.update(value=""),gr.update(value="tmp(F9)"),gr.update(value=0.5),gr.update(value=S_TRIPLE_SUM),gr.update(value=False),gr.update(value=""),gr.update(value="safetensors"),
+            gr.update(value=""),gr.update(value=""),gr.update(value="tmp(F10)"),gr.update(value=0.5),gr.update(value=S_TRIPLE_SUM),gr.update(value=False),gr.update(value=""),gr.update(value="safetensors")
             ]
         return _ret
     btn_clear_merge_settings.click(
