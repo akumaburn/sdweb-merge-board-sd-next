@@ -47,7 +47,7 @@ class RecipeParser():
         _ret = "# Recipe \n"
         for _recipe in self.recipes.values():
             _recipe:MergeRecipe = _recipe
-            if _recipe.C and _recipe.S == S_AD :
+            if _recipe.C and _recipe.S == S_ADD_DIFFERENCE :
                 _ret += f"{_recipe.O} = {_recipe.A} + {_recipe.B} + {_recipe.C}, {_recipe.M}"
             else:
                 _ret += f"{_recipe.O} = {_recipe.A} + {_recipe.B}, {_recipe.M}"

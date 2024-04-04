@@ -2,6 +2,7 @@ import math
 import os
 import sys
 import re
+import time
 
 from modules import sd_models, extras, shared
 try:
@@ -171,6 +172,36 @@ class MergeRecipe():
 
         # Save merge history and return results
         # This part includes logging and history tracking as implemented before
+        # save log
+        def _get_model_name_hash_sha256(model_title):
+            if model_title == "":
+                return "", "", ""
+            _model_info = sd_models.get_closet_checkpoint_match(model_title)
+            print(f'Model information retrieved: {_model_info}')
+            if hasattr(_model_info, "sha256") and _model_info.sha256 is None:
+                _model_info:CheckpointInfo = _model_info
+                _model_info.calculate_shorthash()
+            _name = _model_info.name if hasattr(_model_info, "name") else _model_info.title
+            _hash = _model_info.hash
+            _sha256 = _model_info.sha256 if hasattr(_model_info, "sha256") else ""
+            return _name, _hash, _sha256
+
+        model_A_name, model_A_hash, model_A_sha256 = _get_model_name_hash_sha256(self.A)
+        model_B_name, model_B_hash, model_B_sha256 = _get_model_name_hash_sha256(self.B)
+        model_C_name, model_C_hash, model_C_sha256 = _get_model_name_hash_sha256(self.C)
+        model_O_name, model_O_hash, model_O_sha256 = _get_model_name_hash_sha256(self.O)
+        mergeHistory.add_history(
+                model_A_name, model_A_hash, model_A_sha256,
+                model_B_name, model_B_hash, model_B_sha256,
+                model_C_name, model_C_hash, model_C_sha256,
+                model_O_name, model_O_hash, model_O_sha256,
+                S=self.S,
+                M=self.M,
+                F=self.F,
+                CF=self.CF,
+                index=index
+            )
+
         return [f"Merge complete. Checkpoint saved as: [{self.O}]", self.O]
 
 
@@ -188,11 +219,13 @@ class MergeRecipe():
             results = results_list[4] if type(results_list[4]) == str else results_list[0]
         else:
             results = results_list[0]
+
+        print(f'Update Filename: {results}')
         # Checkpoint saved to " + output_modelname
         ckpt_path = " ".join(results.split(" ")[3:])
         ckpt_name = os.path.basename(ckpt_path)  # expect aaaa.ckpt
         ckpt_info = sd_models.get_closet_checkpoint_match(ckpt_name)
-        if ckpt_info is None and hasattr(ckpt_info, "sha256"):
+        if ckpt_info is None or not hasattr(ckpt_info, "sha256"):
             ckpt_info = CheckpointInfo(ckpt_path)
             ckpt_info.calculate_shorthash()
             ckpt_info.register()
