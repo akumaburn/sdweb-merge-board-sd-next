@@ -5,7 +5,7 @@ import gradio as gr
 
 from modules import sd_models
 
-from scripts.multimerge.recipe import MergeRecipe, S_WS, S_AD, S_SG
+from scripts.multimerge.recipe import MergeRecipe, S_WEIGHTED_SUM, S_WEIGHTED_SUBTRACTION, S_TENSOR_SUM, S_ADD_DIFFERENCE, S_SUM_TWICE, S_TRIPLE_SUM, S_EUCLIDEAN_ADD_DIFFERENCE, S_MULTIPLY_DIFFERENCE, S_TOP_K_TENSOR_SUM, S_SIMILARITY_ADD_DIFFERENCE, S_DISTRIBUTION_CROSSOVER, S_TIES_ADD_DIFFERENCE
 
 class RecipeParser():
     def __init__(self, txt_recipe=None):
@@ -107,9 +107,9 @@ class RecipeParser():
                 _CF = "ckpt"
 
             if not _C:
-                _S = S_WS
+                _S = S_WEIGHTED_SUM
             else:
-                _S = S_AD
+                _S = S_ADD_DIFFERENCE
 
             _ret = {"A": _A, "B": _B, "C": _C, "O": _O, "M": _M, "F": _F, "S": _S, "CF": _CF}
 
